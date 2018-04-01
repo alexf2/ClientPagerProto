@@ -17,4 +17,4 @@ the behaviour and capabilities, however looks better and has a flexible customiz
 * select/option version works even in IE 5.5 Quirk mode.
 
 
-[ASP.Net MVC demo](http://searchlist.1gb.ru/).
+[ASP.Net MVC demo](http://searchlist.1gb.ru/DemoList/CatList).
