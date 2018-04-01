@@ -50,10 +50,11 @@ namespace ClientPagerProto.DataSource
 
         public void InitializeListConfig(PagedListConfigModel m, HttpContextBase ctx)
         {
-            m.DataServiceUrl = string.Format("{0}/{1}/{2}/{{var}}/{{page}}", HttpRuntime.AppDomainAppVirtualPath, MVC.DemoList.Name, MVC.DemoList.ActionNames.PageData);
+            // {0}/{1}/{2}/{{var}}/{{page}}
+            m.DataServiceUrl = string.Format("{2}/{{var}}/{{page}}", UrlHelper.GenerateContentUrl("~/", ctx), MVC.DemoList.Name, MVC.DemoList.ActionNames.PageData);
 
-            var urlHlp = new UrlHelper(ctx.Request.RequestContext);
-            //m.TemplateUrl = urlHlp.Content("~/Content/pagged-list-template.html");
+            /*var urlHlp = new UrlHelper(ctx.Request.RequestContext);
+            m.TemplateUrl = urlHlp.Content("~/Content/pagged-list-template.html");*/
         }        
     }
 }
