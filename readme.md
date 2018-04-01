@@ -13,7 +13,8 @@ the behaviour and capabilities, however looks better and has a flexible customiz
 * may be used with ASP.Net WebForms postbacks;
 * uses AJAX to load filtered data and new pages dynamically, as user types a search string;
 * precisely mimics keyborad and mouse selection behaviour of HTML select/option;
-* has debounced search pattern string, which facilitates incremental searching.
+* has debounced search pattern string, which facilitates incremental searching;
+* select/option version works even in IE 5.5 Quirk mode.
 
 
 [ASP.Net MVC demo](http://http://searchlist.1gb.ru/).
