@@ -1,6 +1,6 @@
 ## Paginal incremental search list jQuery plugin
 It is a jQuery 3 plugin representing a nice handy list component tightly integrated with paging and incremental searching,
-which is destined for selection items in big data sets. It resembles standrad HTML select/option tag with regard to
+which is destined to select items in big data sets. It resembles standrad HTML select/option tag with regard to
 the behaviour and capabilities, however looks better and has a flexible customizable HTML template. It supports:
 * pure HTML implementation against DIVs;
 * the implementation against HTML select/option;
