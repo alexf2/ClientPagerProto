@@ -12,39 +12,43 @@ namespace ClientPagerProto
         // For more information on bundling, visit http://go.microsoft.com/fwlink/?LinkId=301862
         public static void RegisterBundles(BundleCollection bundles)
         {
-            bundles.UseCdn = true;            
+            bundles.UseCdn = true;
+            BundleTable.EnableOptimizations = true;
 
-            Bundle bandle = new ScriptBundle("~/bundles/jquery",
+            var bandle = new ScriptBundle("~/bundles/jquery",
                 string.Format("http://code.jquery.com/jquery-{0}.min.js", GetScriptVer(JqueryFileName))).
                 Include("~/Scripts/jquery-{version}.js");
             bandle.CdnFallbackExpression = "window.jQuery";
             bundles.Add(bandle);
-            
 
-            // Use the development version of Modernizr to develop with and learn from. Then, when you're
-            // ready for production, use the build tool at http://modernizr.com to pick only the tests you need.
-            //bundles.Add(new ScriptBundle("~/bundles/modernizr").Include("~/Scripts/modernizr-*"));            
+            bandle = new ScriptBundle("~/bundles/bootstrap", "http://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.bundle.min.js").
+                Include("~/Scripts/bootstrap.bundle.js");
+            bundles.Add(bandle);
+
+            bandle = new ScriptBundle("~/bundles/jquery-ui", "http://code.jquery.com/ui/1.12.1/jquery-ui.min.js").
+                Include("~/Scripts/jquery-ui-1.12.1.js");
+            bundles.Add(bandle);
 
             bundles.Add(new ScriptBundle("~/bundles/category-list-js").Include(
-                    "~/Scripts/jquery-ui-1.12.1.js",
-                    //"~/Scripts/json2.js",
                     "~/Scripts/jquery.browser.js",
-                    "~/Scripts/jquery-helpers.js",
-                    "~/Scripts/toolbox-mgr-plugin.js",
-                    "~/Scripts/paginal-list-plugin.js",
-                    "~/Scripts/paginal-list-option-plugin.js"));
+                    "~/customScripts/jquery-helpers.js",
+                    "~/customScripts/toolbox-mgr-plugin.js",
+                    "~/customScripts/paginal-list-plugin.js",
+                    "~/customScripts/paginal-list-option-plugin.js"
+            ));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/normalize.css",
-                      "~/Content/bootstrap.css",
-                      "~/Content/site.css"));
+                      "~/customCss/site.css",
+                      "~/Content/bootstrap.css"
+            ));
 
             bundles.Add(new StyleBundle("~/Content/category-list-css").Include(
                 "~/Content/normalize.css",
-                "~/Content/site.css",
-                "~/Content/paginal-list-plugin.css",
+                "~/customCss/site.css",
+                "~/customCss/paginal-list-plugin.css",
                 "~/Content/jquery-ui*"
-                ));
+            ));
 
         }
 
