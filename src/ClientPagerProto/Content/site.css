@@ -1,0 +1,89 @@
+﻿body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+/*input,
+select,
+textarea {
+    max-width: 280px;
+}*/
+
+.vikingButton {
+    padding: 3px 5px;
+    background: #D7D7E4 url(images/button-bg.jpg) repeat-x;
+    cursor: pointer;
+    border: 1px solid #7b9ebd;
+}
+
+body, html {
+    margin:0; padding:4px;
+	width: 100%;
+    height: 100%;
+}
+
+/*http://jsfiddle.net/3uj5kj0p/5/*/
+
+body, td, input, a, select, textarea, div, span {
+    font-family: verdana, times new roman, arial;
+    font-size: 12px;
+}
+
+.content {            
+    display: -webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */
+    display: -moz-box;         /* OLD - Firefox 19- (buggy but mostly works) */
+    display: -ms-flexbox;      /* TWEENER - IE 10 */
+    display: -webkit-flex;     /* NEW - Chrome */
+    display: flex; 
+
+    height: 100%;
+    min-height: 100%;
+    align-items: center;    
+
+    position: relative;        
+}
+
+.content-center {
+    margin: 0 auto;       
+    /*border: 1px solid red;  */ 
+
+    position: relative;
+    clear: both;
+}
+
+.demo-wrapper {
+    height: 22em;
+    width: 40em;
+    float: left;
+    margin: 0 1em;
+    position: relative;
+}
+
+.demo-wrapper-hdr {
+    width: 40em;
+    float: left;
+    margin: 0 1em;
+    margin-bottom: 1em;
+    position: relative;
+}
+
+
+.demo-wrapper * {
+    box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    -webkit-box-sizing: content-box;
+}

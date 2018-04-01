@@ -1,0 +1,10 @@
+﻿// To regenerate NorthWind.dbml and NorthWind.generated.cs:
+// 1. Run in Visual Studio x86 command prompt:
+//      sqlmetal /server:D:\Work\ReportingMoscow /database:NorthWind /dbml:NorthWind.dbml /namespace:NorthWind.Data /pluralize /sprocs
+// 2. Open generated NorthWind.dbml using XML Editor (not designer) and change:
+//      <Database Name="NorthWind" EntityNamespace="NorthWind.Data" ...
+//      to
+//      <Database Name="NorthWind" EntityNamespace="NorthWind.Data.Entities" ...
+// 3. Run:
+//      sqlmetal /code:NorthWind.generated.cs NorthWind.dbml /context:NorthWindDataContext
+

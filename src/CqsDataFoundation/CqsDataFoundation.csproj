@@ -1,0 +1,98 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{894189B5-EA91-435B-A123-20C8F154EEA9}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Framework.CqsDataFoundation</RootNamespace>
+    <AssemblyName>Framework.CqsDataFoundation</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Runtime.Caching" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Transactions" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Attrs\AttributesHelper.cs" />
+    <Compile Include="Attrs\CacheAttribute.cs" />
+    <Compile Include="Attrs\RetryAttribute.cs" />
+    <Compile Include="Attrs\TransactionAttribute.cs" />
+    <Compile Include="Attrs\ValidationAttribute.cs" />
+    <Compile Include="Command\CommandHandlerBase.cs" />
+    <Compile Include="Command\Decorators\DeadlockRetryCommandHandlerDecorator.cs" />
+    <Compile Include="Command\Decorators\TranContextCommandHandlerDecorator.cs" />
+    <Compile Include="Command\Decorators\TranScopeCommandHandlerDecorator.cs" />
+    <Compile Include="Command\Decorators\ValidationCommandHandlerDecorator.cs" />
+    <Compile Include="Command\ICommandHandler.cs" />
+    <Compile Include="DataContextMgrBase.cs" />
+    <Compile Include="DbHelper.cs" />
+    <Compile Include="DescribedEnumItem.cs" />
+    <Compile Include="LinqExpressionHelper.cs" />
+    <Compile Include="IDataCache.cs" />
+    <Compile Include="IDataContext.cs" />
+    <Compile Include="IDbContextConfig.cs" />
+    <Compile Include="MemCache.cs" />
+    <Compile Include="ObjectDbContextMgr.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Query\Constants.cs" />
+    <Compile Include="Query\Decorators\CacheQueryHandlerDecorator.cs" />
+    <Compile Include="Query\CriterionPredicate.cs" />
+    <Compile Include="Query\DataPage.cs" />
+    <Compile Include="Query\Filtering\FilteringCollection.cs" />
+    <Compile Include="Query\Filtering\FilteringDescriptor.cs" />
+    <Compile Include="Query\IQueryPagged.cs" />
+    <Compile Include="Query\IQuery.cs" />
+    <Compile Include="Query\IQueryHandler.cs" />
+    <Compile Include="Query\IQueryVisitor.cs" />
+    <Compile Include="Query\Providers\FullTextSearchUtils.cs" />
+    <Compile Include="Query\Providers\LinqProvider.cs" />
+    <Compile Include="Query\Providers\PropertyValidator.cs" />
+    <Compile Include="Query\Providers\SqlProvider.cs" />
+    <Compile Include="Query\QueryBase.cs" />
+    <Compile Include="Query\QueryHandlerBase.cs" />
+    <Compile Include="Query\QueryHandlerPaggedLinqBase.cs" />
+    <Compile Include="Query\QueryHandlerPaggedSqlBase.cs" />
+    <Compile Include="Query\QueryPaggedBase.cs" />
+    <Compile Include="Query\Sorting\SortingCollection.cs" />
+    <Compile Include="Query\Sorting\SortingDescriptor.cs" />
+    <Compile Include="Query\Decorators\ValidationQueryHandlerDecorator.cs" />
+    <Compile Include="Validation\ValidateObjectAttribute.cs" />
+    <Compile Include="Validation\ValidationHelper.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

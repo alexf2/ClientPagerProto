@@ -1,0 +1,45 @@
+﻿@model IPagedListConfigModel
+
+@using ClientPagerProto.PaggedList           
+@using ClientPagerProto.DataSource.Viking
+
+
+
+<!-- List control -->
+<div class='list-container' id="lookup_custom_filters_ctl-@Model.ModelId">
+    
+    @Html.Hidden("lookup_custom_filters_ctl-hidden-" + @Model.ModelId, JsonHelperNs.ToJson(Model, false, true))
+
+    <div class="list-filter-container">
+        <input class="list-filter-input" type="text"  placeholder='Search'/>
+    </div>
+
+    <div class='list-page-container-opt unselectable' role='listbox' onselectstart='return false;' unselectable="on">
+        <div class="list-page-items-select-wrap">
+            <select class="list-page-items-select" size="5"></select>
+        </div>
+    </div>
+
+    <div class="list-pager-container unselectable">
+
+        <a href='#' class='pager-pg-first'><img src='../images/first.png' alt='Move to First' title='Move to First' /></a>
+        <a href='#' class='pager-pg-prev'><img src='../images/prev.png' alt='Move to Preciding' title='Move to Preciding' /></a>
+
+        <span class='list-pager-number'>&nbsp;<span class='pager-pg-numbers'>1 of 257 (100)</span>&nbsp;<img src='../images/icon-arrow-down-b-16.png' />&nbsp;</span>
+
+        <a href='#' class='pager-pg-next'><img src='../images/next.png' alt='Move to Next' title='Move to Next' /></a>
+        <a href='#' class='pager-pg-last'><img src='../images/last.png' alt='Move to Last' title='Move to Last' /></a>
+    </div>       
+
+</div>
+
+<div class="viking-toolbox list-pager-toolbox">
+    <label>Page Number:</label>&nbsp;<input type="number" size="5" class='list-pager-toolbox-page-inp' min="1" max="10" value="1" />
+    <input type='range' class='list-pager-toolbox-page' min='1' max='10' value='1'/>
+    <br/><label>Page Size:&nbsp;<span class="list-pager-toolbox-size-inp">10</span></label>
+    <input type='range' class='list-pager-toolbox-size' min='10' max='500' value="10" step="10" />
+    
+    <div class="list-pager-toolbox-footer">
+        <input type='button' class='list-pager-toolbox-ok vikingButton' value="OK" />&nbsp;&nbsp;<a href="#" class="list-pager-toolbox-cancel">Cancel</a>
+    </div>
+</div>

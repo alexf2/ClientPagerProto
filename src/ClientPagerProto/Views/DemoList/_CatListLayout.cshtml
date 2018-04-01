@@ -1,0 +1,29 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />    
+
+    <title>Category pagged list demo</title>
+
+    @RenderSection("Css", required: false)    
+        
+    @Scripts.Render("~/bundles/jquery")
+    @* @Scripts.Render("~/bundles/knockoutjs") *@
+    @RenderSection("Scripts", required: false)
+    
+</head>
+
+    <body>                
+        <div class="content">
+            <div class="content-center">
+                <h2 style="margin-top:0">@ViewBag.Title</h2>
+                @RenderBody()
+            </div>
+        </div>
+
+        @RenderSection("JavaScript", required: false)
+
+    </body>
+
+</html>

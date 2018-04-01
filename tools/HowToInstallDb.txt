@@ -1,0 +1,26 @@
+To install the Northwind database on a default instance on the same computer:
+	osql -E -i instnwnd.sql
+
+To install the pubs database on a default instance on a different computer:
+	osql -E -S ComputerName -i instpubs.sql
+
+To install the Northwind database on a named instance:
+	osql -E -S ComputerName/InstanceName -i instnwnd.sql
+
+
+Installing uder SQL server identification, using an instance alias:
+	osql -U sa -P firm -S D:\WorkConfirmit\ReportingMoscow -i instnwnd.sql
+
+
+After creating the DB, go to SQL Management studio and execute the script to create a user:
+
+use master
+go
+
+create login NorthWind with password = N'password', CHECK_POLICY = OFF;
+use NorthWind
+go
+create user NorthWind for login NorthWind
+EXEC sp_addrolemember N'db_owner', N'NorthWind'
+go
+

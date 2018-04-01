@@ -1,0 +1,88 @@
+﻿@model CatListModel
+@using System.Collections.Specialized
+@using ClientPagerProto.Models
+@using ClientPagerProto.PaggedList
+@{
+    Layout = "_CatListLayout.cshtml";
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/category-list-js")    
+
+    <script type="text/javascript">
+        $(function () {
+            $('.demo-wrapper').resizable({ minWidth: '200', minHeight: '150' });
+        });
+    </script>
+}
+
+@section Css {
+    @Styles.Render("~/Content/category-list-css")
+}
+
+    <div class='demo-wrapper-hdr'>Single select (Arrows, Home, End - to move, --&gt; and &lt;-- to page)</div><div class='demo-wrapper-hdr'>Multi select (use Ctrl or Shift - to select many, Ctrl+A - to select all)</div><!--[if lte IE 7]><br/><![endif]-->
+
+    <div id="list-wrapper-@Model.LeftListModel.ModelId" class="ui-resizable demo-wrapper" style="clear:left">
+        @{ Html.RenderPartial(MVC.DemoList.Views.PagedListPartial, Model.LeftListModel); }
+    </div>
+
+    <div id="list-wrapper-@Model.RightListModel.ModelId" class="ui-resizable demo-wrapper">
+        @{ Html.RenderPartial(MVC.DemoList.Views.PagedListPartial, Model.RightListModel); }
+    </div>
+    
+ 
+    <!--[if lte IE 7]><div style="position:relative; clear:both; margin-top: 5em; ">&nbsp;</div><![endif]-->
+
+    <div class='demo-wrapper-hdr' style='clear: both; padding-top: 2em'>Version based on Html select/option</div><!--[if lte IE 7]><br/><![endif]-->
+
+    <div id="list-wrapper-@Model.LeftListModelOption.ModelId" class="ui-resizable demo-wrapper" style="clear:left">
+        @{ Html.RenderPartial(MVC.DemoList.Views.PagedListPartialOption, Model.LeftListModelOption); }
+    </div>
+
+    <div id="list-wrapper-@Model.RightListModelOption.ModelId" class="ui-resizable demo-wrapper">
+        @{ Html.RenderPartial(MVC.DemoList.Views.PagedListPartialOption, Model.RightListModelOption); }
+    </div>        
+
+
+@section JavaScript {
+    <script type="text/javascript">
+    $('#lookup_custom_filters_ctl-@Model.LeftListModel.ModelId').paginal_list({
+        modelUniqueId: '@Model.LeftListModel.ModelId',
+        prepareXhrPageRequest: function (xhrReq) { xhrReq.url = xhrReq.url.replace(/\{var\}/i, '@ViewBag.VarLeft'); },
+        exclusiveItemIds: ['__all__'],
+        enableLoaderIcon: true
+    });
+
+        $('#lookup_custom_filters_ctl-@Model.RightListModel.ModelId').paginal_list({
+        modelUniqueId: '@Model.RightListModel.ModelId',
+        prepareXhrPageRequest: function (xhrReq) { xhrReq.url = xhrReq.url.replace(/\{var\}/i, '@ViewBag.VarRight'); },
+        multiSelect: true,
+        exclusiveItemIds: ['__all__'],
+        enableLoaderIcon: false
+    });
+
+        $('#lookup_custom_filters_ctl-@Model.LeftListModelOption.ModelId').paginal_list_option({
+        modelUniqueId: '@Model.LeftListModelOption.ModelId',
+        prepareXhrPageRequest: function (xhrReq) { xhrReq.url = xhrReq.url.replace(/\{var\}/i, '@ViewBag.VarLeftOpt'); },
+        exclusiveItemIds: ['__all__'],
+        enableLoaderIcon: true
+    });
+
+        $('#lookup_custom_filters_ctl-@Model.RightListModelOption.ModelId').paginal_list_option({
+        modelUniqueId: '@Model.RightListModelOption.ModelId',
+        prepareXhrPageRequest: function (xhrReq) { xhrReq.url = xhrReq.url.replace(/\{var\}/i, '@ViewBag.VarRightOpt'); },
+        multiSelect: true,
+        exclusiveItemIds: ['__all__'],
+        enableLoaderIcon: false
+    });
+
+    $('#lookup_custom_filters_ctl-@Model.LeftListModel.ModelId, #lookup_custom_filters_ctl-@Model.RightListModel.ModelId').on('pl-changed', function (e) {
+            window.console && console.log($(e.target).data('paginal_list').getSelectedIds());
+            return false;
+        });
+        $('#lookup_custom_filters_ctl-@Model.LeftListModelOption.ModelId, #lookup_custom_filters_ctl-@Model.RightListModelOption.ModelId').on('pl-changed', function (e) {
+            window.console && console.log($(e.target).data('paginal_list_option').getSelectedIds());
+            return false;
+        });
+    </script>
+}
